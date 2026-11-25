@@ -1,0 +1,15 @@
+# Cadastro expansível de ativos. Para incluir uma empresa basta o ticker da B3.
+# CNPJ, código CVM, razão social e setor NÃO são digitados: vêm do FCA e do cadastro da CVM
+# (ver src/ingestion/cadastro.py). "termos" só serve para achar a empresa em títulos de notícias.
+ativos:
+  - {ticker: PETR4, termos: [Petrobras, PETR3, PETR4]}
+  - {ticker: VALE3, termos: ["Vale (VALE3)", "VALE3", "mineradora Vale"]}
+  - {ticker: ITUB4, termos: ["Itaú", ITUB3, ITUB4]}
+  - {ticker: WEGE3, termos: ["WEG ", WEGE3]}
+  - {ticker: BBAS3, termos: ["Banco do Brasil", BBAS3]}
+  - {ticker: ABEV3, termos: [Ambev, ABEV3]}
+  - {ticker: B3SA3, termos: ["B3SA3", "B3 (B3SA3)"]}
+  - {ticker: RENT3, termos: ["Localiza (RENT3)", RENT3, "Localiza&Co", "Localiza tem", "ações da Localiza"]}
+  - {ticker: EMBJ3, termos: [Embraer, EMBR3, EMBJ3], tickers_antigos: [EMBR3]}
+  - {ticker: GGBR4, termos: [Gerdau, GGBR3, GGBR4]}
+indice: "^BVSP"

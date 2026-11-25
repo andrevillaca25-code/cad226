@@ -1,0 +1,53 @@
+# Parâmetros do projeto. Mudar aqui muda o notebook e o painel ao mesmo tempo.
+semente: 42
+
+dados:
+  inicio_precos: "2017-01-02"   # aquecimento das médias longas
+  inicio_base: "2018-01-02"     # primeira data usada em modelagem
+  congelamento: "2026-11-20"    # última data da avaliação; depois disso é "ao vivo"
+  primeiro_ano_cvm: 2016        # DFP 2016 é necessária para o acumulado de 12 meses de 2017
+  primeiro_ano_ipe: 2017
+  categorias_ipe: ["Fato Relevante", "Comunicado ao Mercado"]
+  # O texto integral só é usado na categoria com cobertura completa em todos os anos. Os comunicados entram
+  # pelo assunto: usar o texto só dos que foram baixados mudaria a medida entre treino e teste.
+  texto_integral: ["Fato Relevante"]
+
+divisao:                        # limites inclusivos, em data de pregão do sinal
+  treino: ["2018-01-02", "2023-12-28"]
+  validacao: ["2024-01-02", "2024-12-30"]
+  teste: ["2025-01-02", "2026-11-18"]   # 20/11 é feriado; alvo em 19/11 e execução até a abertura de 23/11
+  n_folds: 5
+  embargo_pregoes: 5            # pregões descartados entre treino e validação de cada fold
+
+sentimento:
+  modelo: "lucas-leme/FinBERT-PT-BR"
+  revisao: "c3bf75c85f9b1b0dd257d688822d64390420936c"
+  max_tokens: 256
+  lote: 16
+
+lstm:
+  janela: 20
+  epocas_max: 25
+  paciencia: 4
+  lote: 256
+  taxa: 0.001
+  sementes: [42, 43, 44]
+
+custos:                         # HIPÓTESES do grupo, por lado da operação, em pontos-base
+  tarifas_bps: 3.0              # emolumentos + liquidação
+  spread_slippage_bps: 5.0      # meio spread + slippage
+  sensibilidade_bps: [0, 4, 8, 15, 30]
+
+rede:
+  user_agent: "academic-research/0.1"
+  pausa_cvm_s: 10               # Crawl-delay do robots.txt de dados.cvm.gov.br
+  pausa_documentos_s: 2.0
+  feeds:
+    InfoMoney: "https://www.infomoney.com.br/feed/"
+    Money Times: "https://www.moneytimes.com.br/feed/"
+    Agencia Brasil: "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml"
+
+# Eventos que distorcem o preço sem perda para o acionista e que o Yahoo não corrige.
+# O retorno do dia é neutralizado nas variáveis e a observação correspondente sai do alvo.
+eventos_societarios:
+  - {ticker: ITUB4, data: "2021-10-04", motivo: "cisao da participacao na XP (XPart)", evidencia: "Fato relevante CVM de 02/10/2021"}

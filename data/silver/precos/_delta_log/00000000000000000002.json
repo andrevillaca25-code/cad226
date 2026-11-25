@@ -1,0 +1,1 @@
+{"commitInfo":{"timestamp":1795636367003,"operation":"VACUUM START","operationParameters":{"specifiedRetentionMillis":"0","retentionCheckEnabled":"false","defaultRetentionMillis":"604800000"},"engineInfo":"delta-rs:py-1.7.0","txnId":"a267f6c8-7abf-4c96-989d-8a2163b2beaf","clientVersion":"delta-rs.py-1.7.0","operationMetrics":{"numFilesToDelete":1,"sizeOfDataToDelete":2076468}}}

@@ -1,0 +1,18 @@
+# Faixas escolhidas para o Colab 2026.10 (Python 3.13). As versoes exatas usadas estao em requirements-lock.txt
+pandas>=2.2
+numpy>=2.0
+pyarrow>=17
+deltalake>=1.0
+yfinance>=1.0
+requests>=2.32
+feedparser>=6.0
+pypdf>=5.0
+pyyaml>=6.0
+scikit-learn>=1.5
+torch>=2.6
+transformers>=4.50
+shap>=0.46
+matplotlib>=3.9
+plotly>=5.24
+streamlit>=1.50
+pytest>=8.0
