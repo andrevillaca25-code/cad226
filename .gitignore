@@ -7,3 +7,4 @@ data/bronze/_zips/
 data/bronze/_documentos/
 */_tmp/
 *.zip
+*.log
